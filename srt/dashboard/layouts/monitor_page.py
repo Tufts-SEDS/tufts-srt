@@ -1489,7 +1489,7 @@ def register_callbacks(
     @ app.callback(
         Output("signal", "children"),
         [
-            # Input("btn-stow", "n_clicks"),
+            Input("btn-stow", "n_clicks"),
             Input("btn-stop-record", "n_clicks"),
             Input("btn-quit", "n_clicks"),
             Input("btn-calibrate", "n_clicks"),
@@ -1497,7 +1497,7 @@ def register_callbacks(
         [State("recording-alert", "is_open")]
     )
     def cmd_button_pressed(
-        # n_clicks_stow,
+        n_clicks_stow,
         n_clicks_stop_record,
         n_clicks_shutdown,
         n_clicks_calibrate,
@@ -1509,6 +1509,7 @@ def register_callbacks(
         else:
             button_id = ctx.triggered[0]["prop_id"].split(".")[0]
             if button_id == "btn-stow":
+                print("stow button pressed")
                 command_thread.add_to_queue("stow")
             if button_id == "btn-stop-record":
                 command_thread.add_to_queue("roff")
