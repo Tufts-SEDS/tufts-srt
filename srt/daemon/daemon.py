@@ -634,7 +634,7 @@ class SmallRadioTelescopeDaemon:
                 else:
                     past_rotor_location = self.rotor_location
                     self.rotor_location = self.rotor.get_azimuth_elevation()
-                    print(self.rotor_location)
+                    # print(self.rotor_location)
                     if not self.rotor_location == past_rotor_location:
                         g_lat, g_lon = self.ephemeris_tracker.convert_to_gal_coord(
                             self.rotor_location
